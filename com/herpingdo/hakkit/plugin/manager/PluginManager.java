@@ -20,7 +20,7 @@ public class PluginManager {
         this.server = server;
 		this.loadedPlugins = new ArrayList<Plugin>();
 		this.loadInternalPlugins();
-		this.callEnable();
+		//his.callEnable();
 	}
 	
 	private void loadInternalPlugins() {
@@ -35,7 +35,7 @@ public class PluginManager {
     /**
      * Call onEnable() for all of the loaded plugins.
      */
-	private void callEnable() {
+	public void callEnable() {
 		for (Plugin plugin : this.loadedPlugins) {
 			plugin.onEnable();
 			server.getLogger().info(plugin.getName(), "by", plugin.getAuthor(), "version", plugin.getVersion(), "enabled!");
@@ -84,6 +84,15 @@ public class PluginManager {
 	}
 	
 	public void registerEvents(Listener listener, Plugin plugin) {
-		
+        ArrayList<Listener> pluginListeners;
+        if (this.listeners.containsKey(plugin)) {
+            pluginListeners = this.listeners.get(plugin);
+        } else {
+            pluginListeners = new ArrayList<Listener>();
+        }
+        pluginListeners.add(listener);
+	    this.listeners.put(plugin, pluginListeners);
+        this.server.getLogger().debug("Registered listener for plugin", plugin.getName());
+
 	}
 }

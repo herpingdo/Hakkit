@@ -1,17 +1,9 @@
 package net.minecraft.src;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.*;
 
 public class MinecraftServerGui extends JComponent
 {
@@ -35,7 +27,8 @@ public class MinecraftServerGui extends JComponent
         var2.add(var1);
         var2.pack();
         var2.setLocationRelativeTo((Component)null);
-        var2.setVisible(true);
+        //TODO: Hakkit (Remove JFrame)
+        //var2.setVisible(true);
         var2.addWindowListener(new MinecraftServerGuiINNER1(par0DedicatedServer));
     }
 

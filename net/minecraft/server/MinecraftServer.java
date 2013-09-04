@@ -1,6 +1,10 @@
 package net.minecraft.server;
 
-import java.awt.GraphicsEnvironment;
+import com.herpingdo.hakkit.Hakkit;
+import com.herpingdo.hakkit.plugin.event.GameTickEvent;
+import net.minecraft.src.*;
+
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.Proxy;
@@ -12,53 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.herpingdo.hakkit.Hakkit;
-
-import net.minecraft.src.AnvilSaveConverter;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.CallableIsServerModded;
-import net.minecraft.src.CallableServerMemoryStats;
-import net.minecraft.src.CallableServerProfiler;
-import net.minecraft.src.ChatMessageComponent;
-import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.CommandBase;
-import net.minecraft.src.ConvertingProgressUpdate;
-import net.minecraft.src.CrashReport;
-import net.minecraft.src.DedicatedServer;
-import net.minecraft.src.DemoWorldServer;
-import net.minecraft.src.DispenserBehaviors;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumGameType;
-import net.minecraft.src.ICommandManager;
-import net.minecraft.src.ICommandSender;
-import net.minecraft.src.ILogAgent;
-import net.minecraft.src.IPlayerUsage;
-import net.minecraft.src.IProgressUpdate;
-import net.minecraft.src.ISaveFormat;
-import net.minecraft.src.ISaveHandler;
-import net.minecraft.src.IUpdatePlayerListBox;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.MinecraftException;
-import net.minecraft.src.NetworkListenThread;
-import net.minecraft.src.Packet;
-import net.minecraft.src.Packet4UpdateTime;
-import net.minecraft.src.PlayerUsageSnooper;
-import net.minecraft.src.Profiler;
-import net.minecraft.src.RConConsoleSource;
-import net.minecraft.src.ReportedException;
-import net.minecraft.src.ServerCommandManager;
-import net.minecraft.src.ServerConfigurationManager;
-import net.minecraft.src.StatList;
-import net.minecraft.src.ThreadDedicatedServer;
-import net.minecraft.src.ThreadMinecraftServer;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldInfo;
-import net.minecraft.src.WorldManager;
-import net.minecraft.src.WorldServer;
-import net.minecraft.src.WorldServerMulti;
-import net.minecraft.src.WorldSettings;
-import net.minecraft.src.WorldType;
 
 public abstract class MinecraftServer implements ICommandSender, Runnable, IPlayerUsage
 {
@@ -607,6 +564,9 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
 
         this.theProfiler.endSection();
         this.theProfiler.endSection();
+        //TODO: Hakkit Start (GameTickEvent)
+        Hakkit.getServer().getPluginManager().callEvent(new GameTickEvent());
+        //TODO: Hakkit End (GameTickEvent)
     }
 
     public void updateTimeLightAndEntities()

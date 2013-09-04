@@ -18,5 +18,6 @@ public class Hakkit {
 	public static void setServer(HakkitServer hakkitServer) {
 		if (server != null) server.destroy();
 		server = hakkitServer;
+        server.initialize();
 	}
 }
