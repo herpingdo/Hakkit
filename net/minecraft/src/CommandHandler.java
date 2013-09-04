@@ -39,9 +39,7 @@ public class CommandHandler implements ICommandManager
         {
             if (var5 == null)
             {
-            	/*
-            	 * TODO: Pony start (Commands)
-            	 */
+            	/* TODO: Hakkit start (Commands) */
             	if (par1ICommandSender instanceof EntityPlayerMP) {
             		boolean res = Hakkit.getServer().getCommandManager().handleCommand(par2Str, Hakkit.getServer().getPlayerByName(((EntityPlayerMP)par1ICommandSender).getEntityName()));
                     if (!res) throw new CommandNotFoundException();
@@ -50,9 +48,7 @@ public class CommandHandler implements ICommandManager
             		throw new CommandNotFoundException();
             	}
                 
-                /*
-                 * TODO: Pony end (Commands)
-                 */
+                /*TODO: Hakkit end (Commands) */
             }
 
             if (var5.canCommandSenderUseCommand(par1ICommandSender))

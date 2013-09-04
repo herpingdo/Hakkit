@@ -29,9 +29,9 @@ public class DedicatedServer extends MinecraftServer implements IServer
         super(par1File);
         this.field_98131_l = new LogAgent("Minecraft-Server", (String)null, (new File(par1File, "server.log")).getAbsolutePath());
         new DedicatedServerSleepThread(this);
-      	//TODO: Pony start (setMinecraftServer)
+      	//TODO: Hakkit start (setMinecraftServer)
     	Hakkit.getServer().setMinecraftServer(this);
-    	//TODO: Pony end (setMinecraftServer)
+    	//TODO: Hakkit end (setMinecraftServer)
     }
 
     /**

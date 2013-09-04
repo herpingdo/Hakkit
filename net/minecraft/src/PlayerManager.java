@@ -147,9 +147,9 @@ public class PlayerManager
         }
 
         this.players.add(par1EntityPlayerMP);
-        //TODO: Pony start (Add player)
+        //TODO: Hakkit start (Add player)
         Hakkit.getServer().handlePlayerJoin(par1EntityPlayerMP);
-        //TODO: Pony end (Add player)
+        //TODO: Hakkit end (Add player)
         this.filterChunkLoadQueue(par1EntityPlayerMP);
     }
 
@@ -232,9 +232,9 @@ public class PlayerManager
         }
 
         this.players.remove(par1EntityPlayerMP);
-        //TODO: Pony start (Player remove)
+        //TODO: Hakkit start (Player remove)
         Hakkit.getServer().handlePlayerQuit(par1EntityPlayerMP);
-        //TODO: Pony end (Player remove)
+        //TODO: Hakkit end (Player remove)
     }
 
     /**
