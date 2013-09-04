@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import com.herpingdo.pony.Pony;
+import com.herpingdo.hakkit.Hakkit;
 
 import net.minecraft.server.MinecraftServer;
 
@@ -30,7 +30,7 @@ public class DedicatedServer extends MinecraftServer implements IServer
         this.field_98131_l = new LogAgent("Minecraft-Server", (String)null, (new File(par1File, "server.log")).getAbsolutePath());
         new DedicatedServerSleepThread(this);
       	//TODO: Pony start (setMinecraftServer)
-    	Pony.getServer().setMinecraftServer(this);
+    	Hakkit.getServer().setMinecraftServer(this);
     	//TODO: Pony end (setMinecraftServer)
     }
 

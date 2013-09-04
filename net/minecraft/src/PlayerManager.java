@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.herpingdo.pony.Pony;
+import com.herpingdo.hakkit.Hakkit;
 
 public class PlayerManager
 {
@@ -148,7 +148,7 @@ public class PlayerManager
 
         this.players.add(par1EntityPlayerMP);
         //TODO: Pony start (Add player)
-        Pony.getServer().handlePlayerJoin(par1EntityPlayerMP);
+        Hakkit.getServer().handlePlayerJoin(par1EntityPlayerMP);
         //TODO: Pony end (Add player)
         this.filterChunkLoadQueue(par1EntityPlayerMP);
     }
@@ -233,7 +233,7 @@ public class PlayerManager
 
         this.players.remove(par1EntityPlayerMP);
         //TODO: Pony start (Player remove)
-        Pony.getServer().handlePlayerQuit(par1EntityPlayerMP);
+        Hakkit.getServer().handlePlayerQuit(par1EntityPlayerMP);
         //TODO: Pony end (Player remove)
     }
 

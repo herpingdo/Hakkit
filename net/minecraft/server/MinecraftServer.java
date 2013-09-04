@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.herpingdo.pony.Pony;
+import com.herpingdo.hakkit.Hakkit;
 
 import net.minecraft.src.AnvilSaveConverter;
 import net.minecraft.src.AxisAlignedBB;

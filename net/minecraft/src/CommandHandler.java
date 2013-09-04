@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.herpingdo.pony.Pony;
+import com.herpingdo.hakkit.Hakkit;
 
 public class CommandHandler implements ICommandManager
 {
@@ -43,7 +43,7 @@ public class CommandHandler implements ICommandManager
             	 * TODO: Pony start (Commands)
             	 */
             	if (par1ICommandSender instanceof EntityPlayerMP) {
-            		boolean res = Pony.getServer().getCommandManager().handleCommand(par2Str, Pony.getServer().getPlayerByName(((EntityPlayerMP)par1ICommandSender).getEntityName()));
+            		boolean res = Hakkit.getServer().getCommandManager().handleCommand(par2Str, Hakkit.getServer().getPlayerByName(((EntityPlayerMP)par1ICommandSender).getEntityName()));
                     if (!res) throw new CommandNotFoundException();
                     else return 0;
             	} else {
