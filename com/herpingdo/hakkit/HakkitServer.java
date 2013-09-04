@@ -1,22 +1,23 @@
 package com.herpingdo.hakkit;
 
-import java.util.List;
-import java.util.HashMap;
-
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.src.EntityPlayerMP;
-
 import com.herpingdo.hakkit.command.CommandManager;
 import com.herpingdo.hakkit.player.Player;
 import com.herpingdo.hakkit.plugin.manager.PluginManager;
+import com.herpingdo.hakkit.util.log.HakkitLogger;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.src.EntityPlayerMP;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class HakkitServer {
-	
-	private PluginManager pluginManager = new PluginManager();
+
+    private HakkitLogger logger = new HakkitLogger();
+    private PluginManager pluginManager = new PluginManager(this);
 	private CommandManager commandManager = new CommandManager();
 	private HashMap<String, Player> playerList = new HashMap<String, Player>();
 	private MinecraftServer minecraftServer;
-	
+
 	public HakkitServer() {
 		if (this.minecraftServer != null) {
 			List<EntityPlayerMP> players = (List<EntityPlayerMP>)this.minecraftServer.getServerConfigurationManager(this.minecraftServer).playerEntityList;
@@ -25,10 +26,12 @@ public class HakkitServer {
 					this.playerList.put(player.getEntityName(), new Player(player));
 				}
 			} else {
-				System.out.println("There were no players!");
+				//System.out.println("There were no players!");
+                this.getLogger().debug("There were no players online when initializing HakkitServer!");
 			}
 		} else {
-			System.out.println("Server was null!");
+			//System.out.println("Server was null!");
+            this.getLogger().debug("MinecraftServer was null when initializing HakkitServer!");
 		}
 	}
 	
@@ -90,7 +93,6 @@ public class HakkitServer {
 	 * @return CommandManager instance
 	 */
 	public CommandManager getCommandManager() {
-		if (this.commandManager == null) this.commandManager = new CommandManager();
 		return this.commandManager;
 	}
 	
@@ -99,7 +101,10 @@ public class HakkitServer {
 	 * @return PluginManager instance
 	 */
 	public PluginManager getPluginManager() {
-		if (this.pluginManager == null) this.pluginManager = new PluginManager();
 		return this.pluginManager;
 	}
+
+    public HakkitLogger getLogger() {
+        return this.logger;
+    }
 }

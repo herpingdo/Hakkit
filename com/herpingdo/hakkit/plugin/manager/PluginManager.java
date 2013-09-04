@@ -1,20 +1,23 @@
 package com.herpingdo.hakkit.plugin.manager;
 
+import com.herpingdo.hakkit.HakkitServer;
+import com.herpingdo.hakkit.plugin.Plugin;
+import com.herpingdo.hakkit.plugin.internal.TestPlugin;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import com.herpingdo.hakkit.plugin.Plugin;
-import com.herpingdo.hakkit.plugin.internal.TestPlugin;
-
 public class PluginManager {
 	
 	private ArrayList<Plugin> loadedPlugins;
 	private HashMap<Plugin, ArrayList<Listener>> listeners = new HashMap<Plugin, ArrayList<Listener>>();
+    private HakkitServer server;
 	
-	public PluginManager() {
+	public PluginManager(HakkitServer server) {
+        this.server = server;
 		this.loadedPlugins = new ArrayList<Plugin>();
 		this.loadInternalPlugins();
 		this.callEnable();
@@ -25,13 +28,17 @@ public class PluginManager {
 	}
 	
 	private void loadPlugin(Plugin p) {
-		System.out.println(p.getName() + " loaded.");
+        this.loadedPlugins.add(p);
+        server.getLogger().info(p.getName(), "loaded.");
 	}
-	
+
+    /**
+     * Call onEnable() for all of the loaded plugins.
+     */
 	private void callEnable() {
 		for (Plugin plugin : this.loadedPlugins) {
 			plugin.onEnable();
-			System.out.println(plugin.getName() + " enabled.");
+			server.getLogger().info(plugin.getName(), "by", plugin.getAuthor(), "version", plugin.getVersion(), "enabled!");
 		}
 	}
 	

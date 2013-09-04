@@ -1,5 +1,9 @@
 package net.minecraft.src;
 
+import com.herpingdo.hakkit.Hakkit;
+import com.herpingdo.hakkit.HakkitServer;
+import net.minecraft.server.MinecraftServer;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -7,10 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
-import com.herpingdo.hakkit.Hakkit;
-
-import net.minecraft.server.MinecraftServer;
 
 public class DedicatedServer extends MinecraftServer implements IServer
 {
@@ -29,9 +29,6 @@ public class DedicatedServer extends MinecraftServer implements IServer
         super(par1File);
         this.field_98131_l = new LogAgent("Minecraft-Server", (String)null, (new File(par1File, "server.log")).getAbsolutePath());
         new DedicatedServerSleepThread(this);
-      	//TODO: Hakkit start (setMinecraftServer)
-    	Hakkit.getServer().setMinecraftServer(this);
-    	//TODO: Hakkit end (setMinecraftServer)
     }
 
     /**
@@ -179,7 +176,11 @@ public class DedicatedServer extends MinecraftServer implements IServer
             this.theRConThreadMain = new RConThreadMain(this);
             this.theRConThreadMain.startThread();
         }
-
+        //TODO: Hakkit Start.
+        HakkitServer hakkitServer = new HakkitServer();
+        hakkitServer.setMinecraftServer(this);
+        Hakkit.setServer(hakkitServer);
+        //TODO: Hakkit End
         return true;
     }
 

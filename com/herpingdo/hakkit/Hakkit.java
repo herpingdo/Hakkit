@@ -1,7 +1,7 @@
 package com.herpingdo.hakkit;
 
 public class Hakkit {
-	private static HakkitServer server = new HakkitServer();
+	private static HakkitServer server = null;
 	
 	/**
 	 * Gets the HakkitServer instance we are using
@@ -16,7 +16,7 @@ public class Hakkit {
 	 * @param hakkitServer Instance to set it to.
 	 */
 	public static void setServer(HakkitServer hakkitServer) {
-		server.destroy();
+		if (server != null) server.destroy();
 		server = hakkitServer;
 	}
 }
