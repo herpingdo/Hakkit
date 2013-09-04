@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
+import com.herpingdo.pony.Pony;
+
 import net.minecraft.server.MinecraftServer;
 
 public class DedicatedServer extends MinecraftServer implements IServer
@@ -26,6 +29,9 @@ public class DedicatedServer extends MinecraftServer implements IServer
         super(par1File);
         this.field_98131_l = new LogAgent("Minecraft-Server", (String)null, (new File(par1File, "server.log")).getAbsolutePath());
         new DedicatedServerSleepThread(this);
+      	//TODO: Pony start (setMinecraftServer)
+    	Pony.getServer().setMinecraftServer(this);
+    	//TODO: Pony end (setMinecraftServer)
     }
 
     /**

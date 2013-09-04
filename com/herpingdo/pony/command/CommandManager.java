@@ -3,6 +3,7 @@ package com.herpingdo.pony.command;
 import java.util.ArrayList;
 
 import com.herpingdo.pony.command.internal.CommandPlugins;
+import com.herpingdo.pony.command.internal.CommandReload;
 import com.herpingdo.pony.command.sender.CommandSender;
 import com.herpingdo.pony.util.StringUtil;
 
@@ -12,6 +13,7 @@ public class CommandManager {
 	public CommandManager() {
 		this.commands = new ArrayList<Command>();
 		this.commands.add(new CommandPlugins());
+		this.commands.add(new CommandReload());
 	}
 	
 	public boolean handleCommand(String raw, CommandSender sender) {

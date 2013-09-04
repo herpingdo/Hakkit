@@ -1,26 +1,28 @@
 package com.herpingdo.pony.plugin.internal;
 
-import com.herpingdo.pony.plugin.Listener;
 import com.herpingdo.pony.plugin.Plugin;
+import com.herpingdo.pony.plugin.manager.Listener;
 
 public class TestPlugin extends Plugin implements Listener {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "TestPlugin";
 	}
 
 	@Override
 	public String getVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return "0.01";
 	}
 
 	@Override
 	public String getAuthor() {
-		// TODO Auto-generated method stub
-		return null;
+		return "herpingdo";
+	}
+	
+	@Override
+	public void onEnable() {
+		System.out.println(this.getName() + " enabled!");
 	}
 
 }

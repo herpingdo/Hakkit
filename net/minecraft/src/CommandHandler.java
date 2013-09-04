@@ -46,6 +46,8 @@ public class CommandHandler implements ICommandManager
             		boolean res = Pony.getServer().getCommandManager().handleCommand(par2Str, Pony.getServer().getPlayerByName(((EntityPlayerMP)par1ICommandSender).getEntityName()));
                     if (!res) throw new CommandNotFoundException();
                     else return 0;
+            	} else {
+            		throw new CommandNotFoundException();
             	}
                 
                 /*

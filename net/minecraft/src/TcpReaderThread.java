@@ -18,7 +18,7 @@ class TcpReaderThread extends Thread
         {
             while (TcpConnection.isRunning(this.theTcpConnection) && !TcpConnection.isServerTerminating(this.theTcpConnection))
             {
-                while (true)
+                //while (true) //TODO: Pony (Annoying debug mode fix.)
                 {
                     if (!TcpConnection.readNetworkPacket(this.theTcpConnection))
                     {
