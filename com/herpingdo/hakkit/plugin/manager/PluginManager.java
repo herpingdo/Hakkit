@@ -3,6 +3,7 @@ package com.herpingdo.hakkit.plugin.manager;
 import com.herpingdo.hakkit.HakkitServer;
 import com.herpingdo.hakkit.plugin.Plugin;
 import com.herpingdo.hakkit.plugin.internal.TestPlugin;
+import com.herpingdo.hakkit.util.log.HakkitLogger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -59,13 +60,13 @@ public class PluginManager {
 	 * @param event The event to call.
 	 */
 	public void callEvent(Event event) {
-		for (Entry<Plugin, ArrayList<Listener>> entry : listeners.entrySet()) {
-			Plugin plugin = entry.getKey();
+        HakkitLogger logger = this.server.getLogger();
+        for (Entry<Plugin, ArrayList<Listener>> entry : listeners.entrySet()) {
 			for (Listener listener : entry.getValue()) {
 				Class listenerClass = listener.getClass();
 				for (Method method : listenerClass.getMethods()) {
 					Class[] methodParameters = method.getParameterTypes();
-					if (methodParameters.length > 1 && methodParameters[0].getSimpleName().equals(event.getEventName())) {
+					if (methodParameters.length >= 1 && methodParameters[0].getSimpleName().equals(event.getEventName())) {
 						if (method.isAnnotationPresent(EventHandler.class)) {
 							try {
 								method.invoke(listener, event);

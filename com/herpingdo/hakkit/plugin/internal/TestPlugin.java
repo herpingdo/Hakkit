@@ -32,7 +32,7 @@ public class TestPlugin extends Plugin implements Listener {
 
     @EventHandler
     public void onGameTick(GameTickEvent evt) {
-        System.out.println("Hacks");
+        //System.out.println("Hacks");
     }
 
 }

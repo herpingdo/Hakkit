@@ -23,20 +23,17 @@ public class HakkitServer {
     }
 
     public void initialize() {
-        if (this.minecraftServer == null) this.minecraftServer = MinecraftServer.getServer();
+        if (this.minecraftServer == null) {
+            this.minecraftServer = MinecraftServer.getServer();
+        }
         List<EntityPlayerMP> players = (List<EntityPlayerMP>) this.minecraftServer.getServerConfigurationManager(this.minecraftServer).playerEntityList;
         if (players.size() > 0) {
             for (EntityPlayerMP player : players) {
                 this.playerList.put(player.getEntityName(), new Player(player));
             }
         } else {
-            //System.out.println("There were no players!");
             this.getLogger().debug("There were no players online when initializing HakkitServer!");
         }
-        //System.out.println("Server was null!");
-        //this.getLogger().debug("MinecraftServer was null when initializing HakkitServer!");
-
-
         this.getPluginManager().callEnable();
     }
 

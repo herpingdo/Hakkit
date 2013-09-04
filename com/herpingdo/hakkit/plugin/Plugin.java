@@ -1,7 +1,13 @@
 package com.herpingdo.hakkit.plugin;
 
+import com.herpingdo.hakkit.Hakkit;
+import com.herpingdo.hakkit.HakkitServer;
+import com.herpingdo.hakkit.util.log.HakkitLogger;
+
 public abstract class Plugin {
-	
+
+    private HakkitLogger logger = null;
+
 	/* Plugin info */
 	/**
 	 * Gets the plugin's name.
@@ -32,4 +38,16 @@ public abstract class Plugin {
 	/* Commands */
 	public String[] getCommands() { return this.getCommand() == null ? null : new String[] { this.getCommand() }; };
 	public String getCommand() { return null; };
+
+    /* Various utility methods. */
+    public HakkitServer getServer() {
+        return Hakkit.getServer();
+    }
+
+    public HakkitLogger getLogger() {
+        if (this.logger == null) {
+            this.logger = new HakkitLogger(this.getName());
+        }
+        return this.logger;
+    }
 }
